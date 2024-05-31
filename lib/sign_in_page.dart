@@ -5,7 +5,10 @@ import 'package:simple_mail/mail_page.dart';
 
 class SignInPage extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: [
+    'email',
+    'https://www.googleapis.com/auth/gmail.send',
+  ]);
 
   Future<void> _signInWithGoogle(BuildContext context) async {
     try {
@@ -30,7 +33,9 @@ class SignInPage extends StatelessWidget {
         // Sign-in successful
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => MailPage(user: user)),
+          MaterialPageRoute(
+              builder: (context) =>
+                  MailPage(user: user, googleAuth: googleAuth)),
         );
       }
     } catch (e) {
@@ -53,21 +58,3 @@ class SignInPage extends StatelessWidget {
     );
   }
 }
-
-// class SuccessPage extends StatelessWidget {
-//   final User user;
-
-//   SuccessPage({required this.user});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Success'),
-//       ),
-//       body: Center(
-//         child: Text('Welcome, ${user.displayName}!'),
-//       ),
-//     );
-//   }
-// }

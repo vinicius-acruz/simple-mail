@@ -2,24 +2,18 @@ import 'dart:convert';
 import 'package:googleapis/gmail/v1.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart' as http;
-import 'package:firebase_auth/firebase_auth.dart';
 
 class EmailSender {
-  //final String _clientId = 'YOUR_CLIENT_ID';
   final List<String> _scopes = [GmailApi.gmailSendScope];
 
   Future<void> sendEmail(
-      User user, String recipient, String subject, String body) async {
-    // Obtain the user's ID token from Firebase Authentication
-    final idToken = await user.getIdToken();
-    print('$idToken');
-
-    // Create the authenticated client with the ID token
+      String accessToken, String recipient, String subject, String body) async {
+    // Create the authenticated client with the access token
     final client = authenticatedClient(
       http.Client(),
       AccessCredentials(
-        AccessToken(
-            'Bearer', idToken!, DateTime.now().toUtc().add(Duration(hours: 1))),
+        AccessToken('Bearer', accessToken,
+            DateTime.now().toUtc().add(Duration(hours: 1))),
         null,
         _scopes,
       ),
@@ -27,9 +21,12 @@ class EmailSender {
 
     final gmailApi = GmailApi(client);
 
+    // Create the MIME message
     final message = Message()
       ..raw = base64Url.encode(utf8.encode('To: $recipient\r\n'
-          'Subject: $subject\r\n\r\n'
+          'Subject: $subject\r\n'
+          'Content-Type: text/plain; charset="utf-8"\r\n'
+          '\r\n'
           '$body'));
 
     try {
