@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "227986853129",
+    "project_id": "simple-mail-eeb17",
+    "storage_bucket": "simple-mail-eeb17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227986853129:android:d80bc5f1bb4f49b82957d8",
+        "android_client_info": {
+          "package_name": "com.example.simple_mail"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "227986853129-3hpqq90kepsgrgpse0s2cd2urcv5086d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.simple_mail",
+            "certificate_hash": "856b592717df44b50f6becb7e73d73068fe44f02"
+          }
+        },
+        {
+          "client_id": "227986853129-g1e2rukumurnr30g7depsn1c4otg5621.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVoHmx0Pp9jLV8GdIdxxcEgjArEhvD6pc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "227986853129-g1e2rukumurnr30g7depsn1c4otg5621.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "227986853129-uesmkj2omj6ghou01199c0q919ljelda.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.simpleMail"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
