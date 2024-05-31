@@ -5,8 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';
 
 class EmailSender {
-  final String _clientId = 'YOUR_CLIENT_ID';
-  final String _gmailSendScope = 'https://www.googleapis.com/auth/gmail.send';
+  //final String _clientId = 'YOUR_CLIENT_ID';
+  final List<String> _scopes = [GmailApi.gmailSendScope];
 
   Future<void> sendEmail(
       User user, String recipient, String subject, String body) async {
@@ -21,7 +21,7 @@ class EmailSender {
         AccessToken(
             'Bearer', idToken!, DateTime.now().toUtc().add(Duration(hours: 1))),
         null,
-        [_gmailSendScope],
+        _scopes,
       ),
     );
 
