@@ -11,6 +11,8 @@ class SignInPage extends StatelessWidget {
     'https://www.googleapis.com/auth/gmail.send',
   ]);
 
+  SignInPage({super.key});
+
   Future<void> _signInWithGoogle(BuildContext context) async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
@@ -48,7 +50,7 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign In'),
+        title: const Text('Sign In'),
       ),
       body: Center(
         child: Padding(

@@ -13,7 +13,7 @@ class EmailSender {
       http.Client(),
       AccessCredentials(
         AccessToken('Bearer', accessToken,
-            DateTime.now().toUtc().add(Duration(hours: 1))),
+            DateTime.now().toUtc().add(const Duration(hours: 1))),
         null,
         _scopes,
       ),
