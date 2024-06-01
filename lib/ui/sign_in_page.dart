@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:simple_mail/mail_page.dart';
+import 'package:simple_mail/ui/widgets/google_sign_in_button.dart';
+import 'mail_page.dart';
 
 class SignInPage extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -50,9 +51,11 @@ class SignInPage extends StatelessWidget {
         title: Text('Sign In'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () => _signInWithGoogle(context),
-          child: Text('Sign in with Google'),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: GoogleSignInButton(
+            onPressed: () => _signInWithGoogle(context),
+          ),
         ),
       ),
     );
